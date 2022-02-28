@@ -6,7 +6,19 @@
     <description>Recent content on H4ns&#39; blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Feb 2022 13:32:38 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Feb 2022 15:23:29 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>247CTF Easy Challs [ Reversing ]</title>
+      <link>https://h4ns21.github.io/blog/post/rever247ez/</link>
+      <pubDate>Mon, 28 Feb 2022 15:23:29 -0500</pubDate>
+      
+      <guid>https://h4ns21.github.io/blog/post/rever247ez/</guid>
+      <description>In this post I will show the solution to the easiest challenges in the Reversing category.
+The More The Merrier When opening the main code in the IDA tool we notice that there is a variable called unk_6E8 which is moving its content to the rax register.
+Let&amp;rsquo;s see what&amp;rsquo;s inside.
+We note that inside the variable is the flag we were looking for. It does not show us these characters if we launch the strings command because each character is separated from the next by 3 bytes.</description>
+    </item>
+    
     <item>
       <title>Common Web Vulns Project [ WEB ]</title>
       <link>https://h4ns21.github.io/blog/post/commonwebvulns/</link>
