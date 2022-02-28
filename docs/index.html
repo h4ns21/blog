@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.92.2" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>H4ns&#39; blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="W3lcome to my world! by H4ns">
+		<meta property="og:title" content="H4ns&#39; blog" />
+<meta property="og:description" content="W3lcome to my world! by H4ns" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/" />
+
+
+		<meta itemprop="name" content="H4ns&#39; blog">
+<meta itemprop="description" content="W3lcome to my world! by H4ns">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="H4ns&#39; blog"/>
+<meta name="twitter:description" content="W3lcome to my world! by H4ns"/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-blue.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="H4ns' blog">
+	<link rel="manifest" href="/manifest.json">
+		
+</head>
+<body class="body kind-home">
+	<header class="header">
+	<a class="logo" href="/">H4ns&#39; blog</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+			<div class="cards">
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/fd-chall/">Fd pwnable.kr [ PWN ]</a></h1>
+	<div class="entry__content">The first thing we have to do when logging into the ssh server is to look at the program code.
+#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&lt;2){ printf(&#34;pass argv[1] a number\n&#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&#34;LETMEWIN\n&#34;, buf)){ printf(&#34;good job :)\n&#34;); system(&#34;/bin/cat flag&#34;); exit(0); } printf(&#34;learn about Linux file IO\n&#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:44:48-05:00">February 27, 2022</time>
+	</div>
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/racecar/">Racecar HTB [ PWN ]</a></h1>
+	<div class="entry__content">Before starting the vulnerability search, we must first perform a basic analysis.
+If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
+We are going to debug the executable with the IDA tool.
+Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:39:55-05:00">February 27, 2022</time>
+	</div>
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/takitochall/">TakitoChall CYBEX [ WEB ]</a></h1>
+	<div class="entry__content">Introduction The objective of this challenge is to get an RCE, specifically to get the output of the cat /etc/passwd command.
+from flask import Flask from flask import request from os import system app = Flask(__name__) @app.route(&#39;/&#39;) def rce(): ip = request.args.get(&#39;ip&#39;) if ip is None: return &#39;Please use ?ip=127.0.0.1&#39; for char in &#39;&amp;;|$()`&#39;: if char in ip: return &#39;Character {}is blocked&#39;.format(char) system(&#39;ping -c 1 &#39;+ip) return &#39;Ping sent&#39; if __name__ == &#39;__main__&#39;: app.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:35:38-05:00">February 27, 2022</time>
+	</div>
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/comparethepair/">Compare the pair 247CTF [ WEB ]</a></h1>
+	<div class="entry__content">Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
+Solution When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.
+&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:33:12-05:00">February 27, 2022</time>
+	</div>
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/zoom2win/">Zoom2win KQ CTF [ PWN ]</a></h1>
+	<div class="entry__content">Introduction Let&rsquo;s start this challenge by looking at its description, and see what the author has to tell us about it.
+Okay, so we already know that this is a basic ret2win. Let&rsquo;s not waste any more time and start developing the script.
+First steps Let&rsquo;s see what type of architecture it has because depending on whether it is x64 or x86_64 there are several modifications to be made in the final code.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:29:07-05:00">February 27, 2022</time>
+	</div>
+</article>
+					</div>
+			</div>
+	</main>
+	
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:alvaromansoporteiro@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/h4ns21">
+			<svg class="social__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/alvarinhogz">
+			<svg class="social__icon" aria-label="Instagram" role="img" width="32" height="32" viewBox="0 0 512 512"><g fill="none" stroke-width="29"><rect height="296" rx="78" width="296" x="108" y="108"/><circle cx="256" cy="256" r="69"/></g><circle cx="343" cy="169" r="19"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/%c3%81lvaro%20Manso%20Porteiro">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/h4ns21">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2022 H4ns. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
+</body>
+</html>
