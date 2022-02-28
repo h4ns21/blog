@@ -10,7 +10,7 @@ In this post I will show the solution to the easiest challenges in the Reversing
 
 ![image](https://user-images.githubusercontent.com/88755387/156053671-4bb25f34-3f03-4ec0-b54a-a356cde535d8.png)
 
-When opening the main code in the IDA tool we notice that there is a variable called `unk_6E8` which is moving its content to the rax register.
+When opening the main code in the IDA tool we notice that there is a weird variable called `unk_6E8` which is moving its content to the rax register.
 
 ![image](https://user-images.githubusercontent.com/88755387/156054315-fbe42ef0-2129-40f4-92fe-f53a9083eae2.png)
 
@@ -18,7 +18,7 @@ Let's see what's inside.
 
 ![image](https://user-images.githubusercontent.com/88755387/156055740-72794539-6db7-4e4a-ab02-49537b0d6ced.png)
 
-We note that inside the variable is the flag we were looking for. It does not show us these characters if we launch the `strings` command because each character is separated from the next by 3 bytes. 
+We notice that it is the flag because of the first 4 characters `247{`. These are not shown if we launch the `strings` command because there are 3 bytes between each one.
 
 ## __The Encrypted Password__
 
@@ -30,9 +30,7 @@ Let's start the challenge by running it and see what it asks of us.
 
 ![image](https://user-images.githubusercontent.com/88755387/156058151-5861690d-2fe6-42b9-a5c3-83a9c44960e4.png)
 
-We may think that entering the secret password will return the flag we are looking for.
-
-Let's open the program in Ghidra to analyze the main function.
+We may think that entering the secret password will return the flag we are looking for. Let's open the program in Ghidra to analyze the main function.
 
 ![image](https://user-images.githubusercontent.com/88755387/156058929-f599dbf5-247b-4351-8f20-629610e724aa.png)
 
@@ -46,12 +44,12 @@ fgets(local_48,0x21,stdin);
 If we continue reading we will realize that a comparison is made between what we have written and a variable called `local_78` which we do not know what it has inside.
 
 ```c
-  puts("Enter the secret password:");   
-  fgets(user_input,0x21,stdin);   
-  iVar2 = strcmp(user_input,(char *)&local_78);   
-  if (iVar2 == 0) {     
-    printf("You found the flag!\n247CTF{%s}\n",&local_78);   
-  }
+puts("Enter the secret password:");   
+fgets(user_input,0x21,stdin);   
+iVar2 = strcmp(user_input,(char *)&local_78);   
+if (iVar2 == 0) {     
+  printf("You found the flag!\n247CTF{%s}\n",&local_78);   
+}
 ```
 
 To better visualize this we will use the `ltrace` command which will help us to locate the content.
@@ -60,11 +58,11 @@ To better visualize this we will use the `ltrace` command which will help us to 
 ltrace ./encrypted_password
 ```
 
-![image](https://user-images.githubusercontent.com/88755387/156061067-f868d09d-d7da-49fb-98c7-060b129c3f23.png)
+![image](https://user-images.githubusercontent.com/88755387/156066637-c5f789b3-5dba-429b-b05c-265340b43031.png)
 
 Once we know what you are comparing us to, we are going to throw the string at the program.
 
-![image](https://user-images.githubusercontent.com/88755387/156061280-5293c324-4d3d-4fa5-bb84-06c6080042fe.png)
+![image](https://user-images.githubusercontent.com/88755387/156066770-0107286d-d7fc-4f21-b77a-c8f6daea96a7.png)
 
 This challenge can also be solved with the `Angr` tool, which is defined in the official [documentation](https://docs.angr.io/).
 
@@ -93,6 +91,6 @@ flag = s.posix.dumps(0)
 print(flag)
 ```
 
-![image](https://user-images.githubusercontent.com/88755387/156063295-92456bf2-44ca-4294-899c-e7cba99000bf.png)
+![image](https://user-images.githubusercontent.com/88755387/156066898-14fa8fc0-43e3-4a3b-a838-53c38779eabb.png)
 
 I hope you liked the writeups! :D
