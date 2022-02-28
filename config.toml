@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://h4ns21.github.io/blog/"
 title = "H4ns' blog"
 languageCode = "en-us"
 paginate = "10" # Number of elements per page in pagination
