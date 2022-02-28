@@ -12,7 +12,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
   avatar = "img/runa.jpg"
 
 [Params]
-  description = "W3lcome to my world! by H4ns" # Site Description. Used in meta description
+  description = "W3lcome to my w0rld! Here you will find several writeups from different platforms :D" # Site Description. Used in meta description
   copyright = "H4ns" # Copyright holder, otherwise will use .Site.Title
   opengraph = true # Enable OpenGraph if true
   schema = true # Enable Schema
@@ -53,7 +53,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
   instagram = "alvarinhogz"
   # pinterest = "username"
   # vk = "username"
-  # linkedin = "Álvaro Manso Porteiro"
+  # linkedin = ""
   github = "h4ns21"
   # gitlab = "username"
   # stackoverflow = "numberid"
@@ -64,7 +64,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
   facebook = true
   twitter = true
   reddit = true
-  # telegram = true
+  telegram = true
   linkedin = true
   # vk = true
   # pocket = true
@@ -80,7 +80,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
   startUrl = "/"
   backgroundColor = "#2a2a2a"
   themeColor = "#1b1b1b"
-  description = "Responsive card-based & code-light Hugo theme"
+  description = ""
   orientation = "portrait"
   scope = "/"
 

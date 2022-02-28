@@ -1,5 +1,5 @@
 ---
-title: "247CTF Easy Challs [ Reversing ]"
+title: "247CTF Easy [ REVERSING ]"
 date: 2022-02-28T15:23:29-05:00
 draft: false
 ---
