@@ -6,7 +6,17 @@
     <description>Recent content in Posts on H4ns&#39; blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Feb 2022 18:44:48 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Feb 2022 13:32:38 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Common Web Vulns Project [ WEB ]</title>
+      <link>https://h4ns21.github.io/blog/post/commonwebvulns/</link>
+      <pubDate>Mon, 28 Feb 2022 13:32:38 -0500</pubDate>
+      
+      <guid>https://h4ns21.github.io/blog/post/commonwebvulns/</guid>
+      <description>Some time ago I got involved in the world of web vulnerabilities and thanks to several hackers from the Hispanic community we met several days to talk about these vulnerabilities. Time went by and I thought, why don&amp;rsquo;t I make a compilation of the most common vulnerabilities in the bug bounty world? So I created the following repository, I hope you like it!
+The only bad thing is that it is in Spanish as it is dedicated to this wonderful community which has helped me a lot on my way!</description>
+    </item>
+    
     <item>
       <title>Fd pwnable.kr [ PWN ]</title>
       <link>https://h4ns21.github.io/blog/post/fd-chall/</link>
