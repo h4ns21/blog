@@ -68,3 +68,5 @@ https://76df5ddee940a4a1.247ctf.com/?password=<Output>
 ```
 
 Thanks to Maiky for helping me solve the challenge, link to her [blog](https://maikypedia.gitlab.io/posts/).
+
+I hope you liked! :D

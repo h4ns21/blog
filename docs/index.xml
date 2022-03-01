@@ -6,7 +6,17 @@
     <description>Recent content on H4ns&#39; blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Feb 2022 15:23:29 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2022 16:40:06 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>247CTF - Tips and tricks [ WEB ]</title>
+      <link>https://h4ns21.github.io/blog/post/beginner/</link>
+      <pubDate>Tue, 01 Mar 2022 16:40:06 -0500</pubDate>
+      
+      <guid>https://h4ns21.github.io/blog/post/beginner/</guid>
+      <description>When activating the challenge we are given a server which when we connect asks us to make a script to make the sum of the two random numbers that we are given and repeat this process 500 times.
+The first contact I had with the challenge was with the socket library. I thought it could be done with this library but I got to a point where I didn&amp;rsquo;t know how to proceed.</description>
+    </item>
+    
     <item>
       <title>247CTF - Challenges [ REVERSING ]</title>
       <link>https://h4ns21.github.io/blog/post/rever/</link>
