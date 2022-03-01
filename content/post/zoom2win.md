@@ -1,5 +1,5 @@
 ---
-title: "Zoom2win KQ CTF [ PWN ]"
+title: "KQ CTF - Zoom2win [ PWN ]"
 date: 2022-02-27T18:29:07-05:00
 draft: false
 ---

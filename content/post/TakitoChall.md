@@ -1,5 +1,5 @@
 ---
-title: "TakitoChall CYBEX [ WEB ]"
+title: "CYBEX - TakitoChall [ WEB ]"
 date: 2022-02-27T18:35:38-05:00
 draft: false
 ---

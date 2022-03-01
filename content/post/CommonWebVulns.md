@@ -1,5 +1,5 @@
 ---
-title: "Common Web Vulns Project [ WEB ]"
+title: "Research of the most common web vulnerabilities [ WEB ]"
 date: 2022-02-28T13:32:38-05:00
 draft: false
 ---

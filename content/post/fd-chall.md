@@ -1,5 +1,5 @@
 ---
-title: "Fd pwnable.kr [ PWN ]"
+title: "Pwnable.kr - fd [ PWN ]"
 date: 2022-02-27T18:44:48-05:00
 draft: false
 ---

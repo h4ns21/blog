@@ -1,5 +1,5 @@
 ---
-title: "Racecar HTB [ PWN ]"
+title: "HTB - Racecar [ PWN ]"
 date: 2022-02-27T18:39:55-05:00
 draft: false
 ---

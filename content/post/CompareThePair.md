@@ -1,5 +1,5 @@
 ---
-title: "Compare the pair 247CTF [ WEB ]"
+title: "247CTF - Compare the pair [ WEB ]"
 date: 2022-02-27T18:33:12-05:00
 draft: false
 ---
