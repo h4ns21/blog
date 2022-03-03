@@ -69,7 +69,7 @@ class ThreadedLotteryServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer)
 class LotteryHandler(SocketServer.BaseRequestHandler):
     def handle(self):
         secret = random.Random()
-        secret.seed(int(time.time()) +1)
+        secret.seed(int(time.time()))
         winning_choice = str(secret.random())
         self.request.sendall("Can you guess the number to win the flag lottery?\n")
         your_choice = self.request.recv(1024).strip()
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
 The function `time.time()` returns the current time as a floating point number and in this case the float is passed to an integer. We know that by doing this conversion, it is rounded down to the nearest whole number.
 
-This results in up to 1s difference in which `random.seed` can receive the same seed therefore we can use as new input the previous winning number to enter it before that second passes.
+This results in up to 1s difference in which `random.seed` can receive the same seed (current time) therefore we can use as new input the previous winning number to enter it before that second passes.
 
 We are going to create a script to automate this process.
 

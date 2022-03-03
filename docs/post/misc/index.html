@@ -25,7 +25,7 @@ An Impossible Number Description Can you think of a number which at the same tim
 Solution We are given the following C code.
 #include &lt;stdio.h&gt;int main() { int impossible_number; FILE *flag; char c; if (scanf(&#34;%d&#34;, &amp;impossible_number)) { if (impossible_number &gt; 0 &amp;&amp; impossible_number &gt; (impossible_number &#43; 1)) { flag = fopen(&#34;flag."><meta itemprop="datePublished" content="2022-03-03T13:28:36-05:00" />
 <meta itemprop="dateModified" content="2022-03-03T13:28:36-05:00" />
-<meta itemprop="wordCount" content="442">
+<meta itemprop="wordCount" content="443">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="247CTF - Challenges [ MISC ]"/>
@@ -130,7 +130,7 @@ Solution We are given the following C code.
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LotteryHandler</span>(SocketServer<span style="color:#f92672">.</span>BaseRequestHandler):
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle</span>(self):
         secret <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>Random()
-        secret<span style="color:#f92672">.</span>seed(int(time<span style="color:#f92672">.</span>time()) <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+        secret<span style="color:#f92672">.</span>seed(int(time<span style="color:#f92672">.</span>time()))
         winning_choice <span style="color:#f92672">=</span> str(secret<span style="color:#f92672">.</span>random())
         self<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>sendall(<span style="color:#e6db74">&#34;Can you guess the number to win the flag lottery?</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
         your_choice <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)<span style="color:#f92672">.</span>strip()
@@ -149,7 +149,7 @@ Solution We are given the following C code.
     server_thread<span style="color:#f92672">.</span>start()
     server<span style="color:#f92672">.</span>serve_forever()
 </code></pre></div><p>The function <code>time.time()</code> returns the current time as a floating point number and in this case the float is passed to an integer. We know that by doing this conversion, it is rounded down to the nearest whole number.</p>
-<p>This results in up to 1s difference in which <code>random.seed</code> can receive the same seed therefore we can use as new input the previous winning number to enter it before that second passes.</p>
+<p>This results in up to 1s difference in which <code>random.seed</code> can receive the same seed (current time) therefore we can use as new input the previous winning number to enter it before that second passes.</p>
 <p>We are going to create a script to automate this process.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3</span>
 <span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
