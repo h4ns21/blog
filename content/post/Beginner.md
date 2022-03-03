@@ -127,6 +127,4 @@ r.close()
 
 ![image](https://user-images.githubusercontent.com/88755387/156256174-d7edb09d-3b74-47cd-ac30-31f62c790953.png)
 
-I hope you liked! :D
-
-
+I hope you enjoyed it! :D

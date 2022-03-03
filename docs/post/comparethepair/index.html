@@ -10,8 +10,8 @@
 	<meta name="description" content="">
 		<meta property="og:title" content="247CTF - Compare the pair [ WEB ]" />
 <meta property="og:description" content="Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
-Solution When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.
-&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion." />
+Solution We are given the following php code.
+&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion. This means that during the comparison of variables of different types, PHP will first convert them to a common, comparable type." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://h4ns21.github.io/blog/post/comparethepair/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-02-27T18:33:12-05:00" />
@@ -20,20 +20,20 @@ Solution When opening the challenge link we find a code which is going to be vul
 
 		<meta itemprop="name" content="247CTF - Compare the pair [ WEB ]">
 <meta itemprop="description" content="Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
-Solution When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.
-&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion."><meta itemprop="datePublished" content="2022-02-27T18:33:12-05:00" />
+Solution We are given the following php code.
+&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion. This means that during the comparison of variables of different types, PHP will first convert them to a common, comparable type."><meta itemprop="datePublished" content="2022-02-27T18:33:12-05:00" />
 <meta itemprop="dateModified" content="2022-02-27T18:33:12-05:00" />
-<meta itemprop="wordCount" content="325">
+<meta itemprop="wordCount" content="317">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="247CTF - Compare the pair [ WEB ]"/>
 <meta name="twitter:description" content="Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
-Solution When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.
-&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion."/>
+Solution We are given the following php code.
+&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion. This means that during the comparison of variables of different types, PHP will first convert them to a common, comparable type."/>
 
 	<link rel="stylesheet" href="/blog/css/bundle.css">
 	<link rel="stylesheet" href="/blog/css/custom.css">
-	<link rel="stylesheet" href="/blog/css/themes/dark-blue.css">
+	<link rel="stylesheet" href="/blog/css/themes/dark-green.css">
 	<link rel="icon" href="/blog/icons/16.png" sizes="16x16" type="image/png">
 	<link rel="icon" href="/blog/icons/32.png" sizes="32x32" type="image/png">
 	<link rel="manifest" href="/blog/manifest.json">
@@ -78,7 +78,7 @@ Solution When opening the challenge link we find a code which is going to be vul
 				<div class="entry__content"><h2 id="__description__"><strong>Description</strong></h2>
 <p>Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?</p>
 <h2 id="__solution__"><strong>Solution</strong></h2>
-<p>When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.</p>
+<p>We are given the following php code.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
   <span style="color:#66d9ef">require_once</span>(<span style="color:#e6db74">&#39;flag.php&#39;</span>);
   $password_hash <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0e902564435691274142490923013038&#34;</span>;
@@ -111,6 +111,7 @@ $x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 </span></code></pre></div><p>The only thing missing would be to enter and pass the output to the password parameter.</p>
 <pre tabindex="0"><code>https://76df5ddee940a4a1.247ctf.com/?password=&lt;Output&gt;
 </code></pre><p>Thanks to Maiky for helping me solve the challenge, link to her <a href="https://maikypedia.gitlab.io/posts/">blog</a>.</p>
+<p>I hope you enjoyed it! :D</p>
 </div>
 				
 				<footer class="entry__footer">

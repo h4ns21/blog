@@ -132,4 +132,4 @@ print(re.search("(kqctf{.*?})",response.decode()))
 
 ![image](https://user-images.githubusercontent.com/88755387/139704228-3c968c21-d0cc-47db-9e45-e4ba43dca2e1.png)
 
-I hope you liked! :D
+I hope you enjoyed it! :D

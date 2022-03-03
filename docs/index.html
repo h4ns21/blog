@@ -23,7 +23,7 @@
 
 	<link rel="stylesheet" href="/blog/css/bundle.css">
 	<link rel="stylesheet" href="/blog/css/custom.css">
-	<link rel="stylesheet" href="/blog/css/themes/dark-blue.css">
+	<link rel="stylesheet" href="/blog/css/themes/dark-green.css">
 	<link rel="icon" href="/blog/icons/16.png" sizes="16x16" type="image/png">
 	<link rel="icon" href="/blog/icons/32.png" sizes="32x32" type="image/png">
 	<link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="H4ns' blog">
@@ -39,6 +39,18 @@
 	
 	<main class="main">
 			<div class="cards">
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/misc/">247CTF - Challenges [ MISC ]</a></h1>
+	<div class="entry__content">In this post I am going to show you how to perform some easy rating challenges on the 247CTF platform.
+An Impossible Number Description Can you think of a number which at the same time is one more than itself?
+Solution We are given the following C code.
+#include &lt;stdio.h&gt;int main() { int impossible_number; FILE *flag; char c; if (scanf(&#34;%d&#34;, &amp;impossible_number)) { if (impossible_number &gt; 0 &amp;&amp; impossible_number &gt; (impossible_number + 1)) { flag = fopen(&#34;flag.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2022-03-03T13:28:36-05:00">March 03, 2022</time>
+	</div>
+</article>
+					</div>
 					<div class="card card--2col">
 					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/beginner/">247CTF - Tips and tricks [ WEB ]</a></h1>
@@ -107,8 +119,8 @@ from flask import Flask from flask import request from os import system app = Fl
 					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/comparethepair/">247CTF - Compare the pair [ WEB ]</a></h1>
 	<div class="entry__content">Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
-Solution When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.
-&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion.</div>
+Solution We are given the following php code.
+&lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion. This means that during the comparison of variables of different types, PHP will first convert them to a common, comparable type.</div>
 	<div class="entry__meta meta mt tar">
 	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:33:12-05:00">February 27, 2022</time>
 	</div>

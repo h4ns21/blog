@@ -193,12 +193,4 @@ The last thing left to do is to open the qemu to show us what was hidden in it.
 
 ![image](https://user-images.githubusercontent.com/88755387/156228743-d0d6834c-e51a-4654-89a4-73e66fc85d40.png)
 
-I hope you liked! :D
-
-
-
-
-
-
-
-
+I hope you enjoyed it! :D

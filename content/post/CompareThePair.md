@@ -10,7 +10,7 @@ Can you identify a way to bypass our login logic? MD5 is supposed to be a one-wa
 
 ## __Solution__
 
-When opening the challenge link we find a code which is going to be vulnerable because of how PHP compares values.
+We are given the following php code.
 
 ```php
 <?php
@@ -69,4 +69,4 @@ https://76df5ddee940a4a1.247ctf.com/?password=<Output>
 
 Thanks to Maiky for helping me solve the challenge, link to her [blog](https://maikypedia.gitlab.io/posts/).
 
-I hope you liked! :D
+I hope you enjoyed it! :D

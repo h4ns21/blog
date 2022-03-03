@@ -84,4 +84,4 @@ good job :)
 mommy! I think I know what a file descriptor is!!
 ```
 
-I hope you liked! :D
+I hope you enjoyed it! :D
