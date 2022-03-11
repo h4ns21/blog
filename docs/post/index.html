@@ -55,18 +55,6 @@
 			
 				<div class="card card--2col">
 					<article class="entry card__box block">
-	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/flagauthoriser/">247CTF - Flag Authoriser [ WEB ]</a></h1>
-	<div class="entry__content">Description Can you forge a new identity to upgrade your access from an anonymous user to an admin?
-Solution We are given the following python code by clicking on the link provided.
-from flask import Flask, redirect, url_for, make_response, render_template, flash from flask_jwt_extended import JWTManager, create_access_token, jwt_optional, get_jwt_identity from secret import secret, admin_flag, jwt_secret app = Flask(__name__) cookie = &#34;access_token_cookie&#34; app.config[&#39;SECRET_KEY&#39;] = secret app.config[&#39;JWT_SECRET_KEY&#39;] = jwt_secret app.config[&#39;JWT_TOKEN_LOCATION&#39;] = [&#39;cookies&#39;] app.config[&#39;DEBUG&#39;] = False jwt = JWTManager(app) def redirect_to_flag(msg): flash(&#39;%s&#39; % msg, &#39;danger&#39;) return redirect(url_for(&#39;flag&#39;, _external=True)) @jwt.</div>
-	<div class="entry__meta meta mt tar">
-	<time class="entry__meta-published meta-published" datetime="2022-03-11T14:33:08-05:00">March 11, 2022</time>
-	</div>
-</article>
-				</div>
-			
-				<div class="card card--2col">
-					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/misc/">247CTF - Challenges [ MISC ]</a></h1>
 	<div class="entry__content">In this post I am going to show you how to perform some easy rating challenges on the 247CTF platform.
 An Impossible Number Description Can you think of a number which at the same time is one more than itself?
@@ -150,8 +138,8 @@ from flask import Flask from flask import request from os import system app = Fl
 			
 				<div class="card card--2col">
 					<article class="entry card__box block">
-	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/comparethepair/">247CTF - Compare the pair [ WEB ]</a></h1>
-	<div class="entry__content">Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/webchalls/">247CTF - Compare the pair [ WEB ]</a></h1>
+	<div class="entry__content">Compare The Pair Description Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
 Solution We are given the following php code.
 &lt;?php require_once(&#39;flag.php&#39;); $password_hash = &#34;0e902564435691274142490923013038&#34;; $salt = &#34;f789bbc328a3d1a3&#34;; if(isset($_GET[&#39;password&#39;]) &amp;&amp; md5($salt . $_GET[&#39;password&#39;]) == $password_hash){ echo $flag; } echo highlight_file(__FILE__, true); ?&gt;PHP has a feature called type juggling or type coercion. This means that during the comparison of variables of different types, PHP will first convert them to a common, comparable type.</div>
 	<div class="entry__meta meta mt tar">
