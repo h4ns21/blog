@@ -67,11 +67,8 @@
 	<summary class="toc__title">Table of Contents</summary>
 	<nav id="TableOfContents">
   <ul>
-    <li><a href="#program-analysis">Program analysis</a>
-      <ul>
-        <li><a href="#to-recap">To recap</a></li>
-      </ul>
-    </li>
+    <li><a href="#program-analysis">Program analysis</a></li>
+    <li><a href="#to-recap">To recap</a></li>
   </ul>
 </nav>
 </details>
@@ -111,7 +108,7 @@ read() attempts to read up to count bytes from file descriptor fd into the buffe
     system(<span style="color:#e6db74">&#34;/bin/cat flag&#34;</span>);
     exit(<span style="color:#ae81ff">0</span>);
 }
-</code></pre></div><h3 id="to-recap">To recap</h3>
+</code></pre></div><h2 id="to-recap">To recap</h2>
 <p>Pass in a number that, when we subtract 0x1234 from it, reads from a file and copies the string <code>LETMEWIN\n</code> into the buffer. On Linux, file descriptor 0 is standard input, so if we can set the file descriptor to 0, we can type in our LETMEWIN\n string.</p>
 <p>0x1234 is hex notation… we need decimal. A quick Google search will get you <code>4660</code> as the decimal equivalent of 0x1234.  We can pass that to fd (the program), which will set fd (the variable) to zero, and let us type in the magic phrase.</p>
 <pre tabindex="0"><code>fd@pwnable:~$ ./fd 4660

@@ -61,7 +61,7 @@ if(!strcmp("LETMEWIN\n", buf)) {
 }
 ```
 
-### To recap
+## To recap
 
 Pass in a number that, when we subtract 0x1234 from it, reads from a file and copies the string `LETMEWIN\n` into the buffer. On Linux, file descriptor 0 is standard input, so if we can set the file descriptor to 0, we can type in our LETMEWIN\n string.
 
