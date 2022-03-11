@@ -4,6 +4,8 @@ date: 2022-03-01T16:40:06-05:00
 draft: false
 ---
 
+## Tips and tricks
+
 When activating the challenge we are given a server which when we connect asks us to make a script to make the sum of the two random numbers that we are given and repeat this process 500 times.
 
 ![image](https://user-images.githubusercontent.com/88755387/156254205-4ada91d7-9fb8-4482-9aa5-5bba7b6a075e.png)

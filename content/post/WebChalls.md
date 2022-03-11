@@ -1,16 +1,16 @@
 ---
-title: "247CTF - Compare the pair [ WEB ]"
+title: "247CTF - Medium Challenges [ WEB ]"
 date: 2022-02-27T18:33:12-05:00
 draft: false
 ---
 
-# Compare The Pair
+## Compare The Pair
 
-## Description
+### Description
 
 Can you identify a way to bypass our login logic? MD5 is supposed to be a one-way function right?
 
-## Solution
+### Solution
 
 We are given the following php code.
 
@@ -69,13 +69,13 @@ The only thing missing would be to enter and pass the output to the password par
 https://76df5ddee940a4a1.247ctf.com/?password=<Output>
 ```
 
-# Flag Authoriser
+## Flag Authoriser
 
-## Description
+### Description
 
 Can you forge a new identity to upgrade your access from an anonymous user to an admin?
 
-## Solution
+### Solution
 
 We are given the following python code by clicking on the link provided.
 

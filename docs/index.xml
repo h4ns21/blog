@@ -25,20 +25,20 @@ Solution We are given the following C code.
       <pubDate>Tue, 01 Mar 2022 16:40:06 -0500</pubDate>
       
       <guid>https://h4ns21.github.io/blog/post/beginner/</guid>
-      <description>When activating the challenge we are given a server which when we connect asks us to make a script to make the sum of the two random numbers that we are given and repeat this process 500 times.
+      <description>Tips and tricks When activating the challenge we are given a server which when we connect asks us to make a script to make the sum of the two random numbers that we are given and repeat this process 500 times.
 The first contact I had with the challenge was with the socket library. I thought it could be done with this library but I got to a point where I didn&amp;rsquo;t know how to proceed.</description>
     </item>
     
     <item>
-      <title>247CTF - Challenges [ REVERSING ]</title>
+      <title>247CTF - Easy Challenges [ REVERSING ]</title>
       <link>https://h4ns21.github.io/blog/post/rever/</link>
       <pubDate>Mon, 28 Feb 2022 15:23:29 -0500</pubDate>
       
       <guid>https://h4ns21.github.io/blog/post/rever/</guid>
       <description>In this post I will show the solution to the easiest challenges in the Reversing category.
-THE MORE THE MERRIER [ EASY ] When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
-Let&amp;rsquo;s see what&amp;rsquo;s inside.
-We notice that it is the flag because of the first 4 characters 247{. These are not shown if we launch the strings command because there are 3 bytes between each one.</description>
+The More The Merrier Description One byte is great. But what if you need more? Can you find the flag hidden in this binary?
+Solution When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
+Let&amp;rsquo;s see what&amp;rsquo;s inside.</description>
     </item>
     
     <item>
@@ -84,7 +84,7 @@ from flask import Flask from flask import request from os import system app = Fl
     </item>
     
     <item>
-      <title>247CTF - Compare the pair [ WEB ]</title>
+      <title>247CTF - Medium Challenges [ WEB ]</title>
       <link>https://h4ns21.github.io/blog/post/webchalls/</link>
       <pubDate>Sun, 27 Feb 2022 18:33:12 -0500</pubDate>
       

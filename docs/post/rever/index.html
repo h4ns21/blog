@@ -5,34 +5,34 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#1b1b1b">
-	<title>247CTF - Challenges [ REVERSING ] | H4ns&#39; blog</title>
+	<title>247CTF - Easy Challenges [ REVERSING ] | H4ns&#39; blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="247CTF - Challenges [ REVERSING ]" />
+		<meta property="og:title" content="247CTF - Easy Challenges [ REVERSING ]" />
 <meta property="og:description" content="In this post I will show the solution to the easiest challenges in the Reversing category.
-THE MORE THE MERRIER [ EASY ] When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
-Let&rsquo;s see what&rsquo;s inside.
-We notice that it is the flag because of the first 4 characters 247{. These are not shown if we launch the strings command because there are 3 bytes between each one." />
+The More The Merrier Description One byte is great. But what if you need more? Can you find the flag hidden in this binary?
+Solution When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
+Let&rsquo;s see what&rsquo;s inside." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://h4ns21.github.io/blog/post/rever/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-02-28T15:23:29-05:00" />
 <meta property="article:modified_time" content="2022-02-28T15:23:29-05:00" />
 
 
-		<meta itemprop="name" content="247CTF - Challenges [ REVERSING ]">
+		<meta itemprop="name" content="247CTF - Easy Challenges [ REVERSING ]">
 <meta itemprop="description" content="In this post I will show the solution to the easiest challenges in the Reversing category.
-THE MORE THE MERRIER [ EASY ] When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
-Let&rsquo;s see what&rsquo;s inside.
-We notice that it is the flag because of the first 4 characters 247{. These are not shown if we launch the strings command because there are 3 bytes between each one."><meta itemprop="datePublished" content="2022-02-28T15:23:29-05:00" />
+The More The Merrier Description One byte is great. But what if you need more? Can you find the flag hidden in this binary?
+Solution When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
+Let&rsquo;s see what&rsquo;s inside."><meta itemprop="datePublished" content="2022-02-28T15:23:29-05:00" />
 <meta itemprop="dateModified" content="2022-02-28T15:23:29-05:00" />
-<meta itemprop="wordCount" content="905">
+<meta itemprop="wordCount" content="961">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="247CTF - Challenges [ REVERSING ]"/>
+<meta name="twitter:title" content="247CTF - Easy Challenges [ REVERSING ]"/>
 <meta name="twitter:description" content="In this post I will show the solution to the easiest challenges in the Reversing category.
-THE MORE THE MERRIER [ EASY ] When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
-Let&rsquo;s see what&rsquo;s inside.
-We notice that it is the flag because of the first 4 characters 247{. These are not shown if we launch the strings command because there are 3 bytes between each one."/>
+The More The Merrier Description One byte is great. But what if you need more? Can you find the flag hidden in this binary?
+Solution When opening the main code in the IDA tool we notice that there is a weird variable called unk_6E8 which is moving its content to the rax register.
+Let&rsquo;s see what&rsquo;s inside."/>
 
 	<link rel="stylesheet" href="/blog/css/bundle.css">
 	<link rel="stylesheet" href="/blog/css/custom.css">
@@ -60,7 +60,7 @@ We notice that it is the flag because of the first 4 characters 247{. These are 
 		<li class="breadcrumb__item">
 			<a class="breadcrumbs__link" href="/blog/post/">Posts</a>
 		</li>
-		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">247CTF - Challenges [ REVERSING ]</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">247CTF - Easy Challenges [ REVERSING ]</li>
 	</ol>
 </nav>
 		<div class="single block">
@@ -68,28 +68,47 @@ We notice that it is the flag because of the first 4 characters 247{. These are 
 	<div class="entry__meta meta mb">
 	<time class="entry__meta-published meta-published" datetime="2022-02-28T15:23:29-05:00">February 28, 2022</time>
 	</div>
-				<h1 class="entry__title">247CTF - Challenges [ REVERSING ]</h1>
+				<h1 class="entry__title">247CTF - Easy Challenges [ REVERSING ]</h1>
 <details class="entry__toc toc" open>
 	<summary class="toc__title">Table of Contents</summary>
 	<nav id="TableOfContents">
   <ul>
-    <li><a href="#__the-more-the-merrier--easy-__"><strong>THE MORE THE MERRIER [ EASY ]</strong></a></li>
-    <li><a href="#__the-encrypted-password--easy-__"><strong>The ENCRYPTED PASSWORD [ EASY ]</strong></a></li>
-    <li><a href="#__the-flag-bootloader--moderate-__"><strong>THE FLAG BOOTLOADER [ MODERATE ]</strong></a></li>
+    <li><a href="#the-more-the-merrier">The More The Merrier</a>
+      <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#solution">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-encrypted-password">The Encrypted Password</a>
+      <ul>
+        <li><a href="#description-1">Description</a></li>
+        <li><a href="#solution-1">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-flag-bootloader">The Flag Bootloader</a>
+      <ul>
+        <li><a href="#description-2">Description</a></li>
+        <li><a href="#solution-2">Solution</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </details>
 				<div class="entry__content"><p>In this post I will show the solution to the easiest challenges in the Reversing category.</p>
-<h2 id="__the-more-the-merrier--easy-__"><strong>THE MORE THE MERRIER [ EASY ]</strong></h2>
-<p><img src="https://user-images.githubusercontent.com/88755387/156053671-4bb25f34-3f03-4ec0-b54a-a356cde535d8.png" alt="image"></p>
+<h2 id="the-more-the-merrier">The More The Merrier</h2>
+<h3 id="description">Description</h3>
+<p>One byte is great. But what if you need more? Can you find the flag hidden in this binary?</p>
+<h3 id="solution">Solution</h3>
 <p>When opening the main code in the IDA tool we notice that there is a weird variable called <code>unk_6E8</code> which is moving its content to the rax register.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/156054315-fbe42ef0-2129-40f4-92fe-f53a9083eae2.png" alt="image"></p>
 <p>Let&rsquo;s see what&rsquo;s inside.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/156055740-72794539-6db7-4e4a-ab02-49537b0d6ced.png" alt="image"></p>
 <p>We notice that it is the flag because of the first 4 characters <code>247{</code>. These are not shown if we launch the <code>strings</code> command because there are 3 bytes between each one.</p>
-<h2 id="__the-encrypted-password--easy-__"><strong>The ENCRYPTED PASSWORD [ EASY ]</strong></h2>
+<h2 id="the-encrypted-password">The Encrypted Password</h2>
 <p>This challenge is a little more complicated than the previous one but nothing that cannot be overcome.</p>
-<p><img src="https://user-images.githubusercontent.com/88755387/156056808-72f45c8c-3e34-4b2e-a73d-c5c4062c8008.png" alt="image"></p>
+<h3 id="description-1">Description</h3>
+<p>You won&rsquo;t find the admin&rsquo;s secret password in this binary. We even encrypted it with a secure one-time-pad. Can you still recover the password?</p>
+<h3 id="solution-1">Solution</h3>
 <p>Let&rsquo;s start the challenge by running it and see what it asks of us.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/156058151-5861690d-2fe6-42b9-a5c3-83a9c44960e4.png" alt="image"></p>
 <p>We may think that entering the secret password will return the flag we are looking for. Let&rsquo;s open the program in Ghidra to analyze the main function.</p>
@@ -127,8 +146,10 @@ print(s<span style="color:#f92672">.</span>posix<span style="color:#f92672">.</s
 flag <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>posix<span style="color:#f92672">.</span>dumps(<span style="color:#ae81ff">0</span>)
 print(flag)
 </code></pre></div><p><img src="https://user-images.githubusercontent.com/88755387/156066898-14fa8fc0-43e3-4a3b-a838-53c38779eabb.png" alt="image"></p>
-<h2 id="__the-flag-bootloader--moderate-__"><strong>THE FLAG BOOTLOADER [ MODERATE ]</strong></h2>
-<p><img src="https://user-images.githubusercontent.com/88755387/156239595-60f7717d-2bb5-40cf-80bb-230a95df7f01.png" alt="image"></p>
+<h2 id="the-flag-bootloader">The Flag Bootloader</h2>
+<h3 id="description-2">Description</h3>
+<p>Can you unlock the secret boot sequence hidden within our flag bootloader to recover the flag?</p>
+<h3 id="solution-2">Solution</h3>
 <p>When downloading the challenge file we will notice that it has a strange extension, so let&rsquo;s investigate to see what it is.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/156219376-87513f98-ffff-46c7-aa9f-5ad55894f7ec.png" alt="image"></p>
 <p>A master boot record (MBR) is a special type of boot sector at the very beginning of partitioned computer mass storage devices like fixed disks or removable drives intended for use with IBM PC-compatible systems and beyond.</p>
@@ -191,16 +212,16 @@ gdb-peda$ c
 	<a class="share__link btn" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
 	</a>
-	<a class="share__link btn" title="Share on Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&amp;text=247CTF%20-%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+	<a class="share__link btn" title="Share on Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&amp;text=247CTF%20-%20Easy%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
 	</a>
-	<a class="share__link btn" title="Share on Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&amp;title=247CTF%20-%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+	<a class="share__link btn" title="Share on Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&amp;title=247CTF%20-%20Easy%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
 	</a>
-	<a class="share__link btn" title="Share on Telegram" href="https://t.me/share/url?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&amp;title=247CTF%20-%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="share__link btn" title="Share on Telegram" href="https://t.me/share/url?url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&amp;title=247CTF%20-%20Easy%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Telegram" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M199 404c-11 0-10-4-13-14l-32-105 245-144"/><path d="M199 404c7 0 11-4 16-8l45-43-56-34"/><path d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"/></svg>
 	</a>
-	<a class="share__link btn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&title=247CTF%20-%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+	<a class="share__link btn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fh4ns21.github.io%2fblog%2fpost%2frever%2f&title=247CTF%20-%20Easy%20Challenges%20%5b%20REVERSING%20%5d" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
 	</a>
 </div>

@@ -1,14 +1,18 @@
 ---
-title: "247CTF - Challenges [ REVERSING ]"
+title: "247CTF - Easy Challenges [ REVERSING ]"
 date: 2022-02-28T15:23:29-05:00
 draft: false
 ---
 
 In this post I will show the solution to the easiest challenges in the Reversing category.
 
-## __THE MORE THE MERRIER [ EASY ]__
+## The More The Merrier
 
-![image](https://user-images.githubusercontent.com/88755387/156053671-4bb25f34-3f03-4ec0-b54a-a356cde535d8.png)
+### Description
+
+One byte is great. But what if you need more? Can you find the flag hidden in this binary?
+
+### Solution
 
 When opening the main code in the IDA tool we notice that there is a weird variable called `unk_6E8` which is moving its content to the rax register.
 
@@ -20,11 +24,15 @@ Let's see what's inside.
 
 We notice that it is the flag because of the first 4 characters `247{`. These are not shown if we launch the `strings` command because there are 3 bytes between each one.
 
-## __The ENCRYPTED PASSWORD [ EASY ]__
+## The Encrypted Password
 
 This challenge is a little more complicated than the previous one but nothing that cannot be overcome.
 
-![image](https://user-images.githubusercontent.com/88755387/156056808-72f45c8c-3e34-4b2e-a73d-c5c4062c8008.png)
+### Description
+
+You won't find the admin's secret password in this binary. We even encrypted it with a secure one-time-pad. Can you still recover the password?
+
+### Solution
 
 Let's start the challenge by running it and see what it asks of us.
 
@@ -93,9 +101,14 @@ print(flag)
 
 ![image](https://user-images.githubusercontent.com/88755387/156066898-14fa8fc0-43e3-4a3b-a838-53c38779eabb.png)
 
-## __THE FLAG BOOTLOADER [ MODERATE ]__
+## The Flag Bootloader
 
-![image](https://user-images.githubusercontent.com/88755387/156239595-60f7717d-2bb5-40cf-80bb-230a95df7f01.png)
+### Description
+
+Can you unlock the secret boot sequence hidden within our flag bootloader to recover the flag?
+
+
+### Solution
 
 
 When downloading the challenge file we will notice that it has a strange extension, so let's investigate to see what it is.
