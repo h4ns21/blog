@@ -6,7 +6,18 @@
     <description>Recent content in Posts on H4ns&#39; blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Mar 2022 13:28:36 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Mar 2022 14:33:08 -0500</lastBuildDate><atom:link href="https://h4ns21.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>247CTF - Flag Authoriser [ WEB ]</title>
+      <link>https://h4ns21.github.io/blog/post/flagauthoriser/</link>
+      <pubDate>Fri, 11 Mar 2022 14:33:08 -0500</pubDate>
+      
+      <guid>https://h4ns21.github.io/blog/post/flagauthoriser/</guid>
+      <description>Description Can you forge a new identity to upgrade your access from an anonymous user to an admin?
+Solution We are given the following python code by clicking on the link provided.
+from flask import Flask, redirect, url_for, make_response, render_template, flash from flask_jwt_extended import JWTManager, create_access_token, jwt_optional, get_jwt_identity from secret import secret, admin_flag, jwt_secret app = Flask(__name__) cookie = &amp;#34;access_token_cookie&amp;#34; app.config[&amp;#39;SECRET_KEY&amp;#39;] = secret app.config[&amp;#39;JWT_SECRET_KEY&amp;#39;] = jwt_secret app.config[&amp;#39;JWT_TOKEN_LOCATION&amp;#39;] = [&amp;#39;cookies&amp;#39;] app.config[&amp;#39;DEBUG&amp;#39;] = False jwt = JWTManager(app) def redirect_to_flag(msg): flash(&amp;#39;%s&amp;#39; % msg, &amp;#39;danger&amp;#39;) return redirect(url_for(&amp;#39;flag&amp;#39;, _external=True)) @jwt.</description>
+    </item>
+    
     <item>
       <title>247CTF - Challenges [ MISC ]</title>
       <link>https://h4ns21.github.io/blog/post/misc/</link>
