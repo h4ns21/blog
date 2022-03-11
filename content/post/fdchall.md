@@ -4,8 +4,6 @@ date: 2022-02-27T18:44:48-05:00
 draft: false
 ---
 
-## fd
-
 The first thing we have to do when logging into the ssh server is to look at the program code.
 
 ```c
@@ -31,7 +29,7 @@ int main(int argc, char* argv[], char* envp[]){
 }
 ```
 
-### __Program analysis__
+## Program analysis
 
 ```python
 int fd = atoi( argv[1] ) - 0x1234;
@@ -63,7 +61,7 @@ if(!strcmp("LETMEWIN\n", buf)) {
 }
 ```
 
-### __To recap__
+### To recap
 
 Pass in a number that, when we subtract 0x1234 from it, reads from a file and copies the string `LETMEWIN\n` into the buffer. On Linux, file descriptor 0 is standard input, so if we can set the file descriptor to 0, we can type in our LETMEWIN\n string.
 

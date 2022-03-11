@@ -103,8 +103,8 @@ The only bad thing is that it is in Spanish as it is dedicated to this wonderful
 			
 				<div class="card card--2col">
 					<article class="entry card__box block">
-	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/fd-chall/">Pwnable.kr - fd [ PWN ]</a></h1>
-	<div class="entry__content">fd The first thing we have to do when logging into the ssh server is to look at the program code.
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/fdchall/">Pwnable.kr - fd [ PWN ]</a></h1>
+	<div class="entry__content">The first thing we have to do when logging into the ssh server is to look at the program code.
 #include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&lt;2){ printf(&#34;pass argv[1] a number\n&#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&#34;LETMEWIN\n&#34;, buf)){ printf(&#34;good job :)\n&#34;); system(&#34;/bin/cat flag&#34;); exit(0); } printf(&#34;learn about Linux file IO\n&#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer.</div>
 	<div class="entry__meta meta mt tar">
 	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:44:48-05:00">February 27, 2022</time>
