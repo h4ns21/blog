@@ -93,7 +93,7 @@ Let&rsquo;s see what&rsquo;s inside.</div>
 				<div class="card card--2col">
 					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/commonwebvulns/">Research of the most common web vulnerabilities [ WEB ]</a></h1>
-	<div class="entry__content">Some time ago I got involved in the world of web vulnerabilities and thanks to several hackers from the Hispanic community we met several days to talk about these vulnerabilities. Time went by and I thought, why don&rsquo;t I make a compilation of the most common vulnerabilities in the bug bounty world? So I created the following repository, I hope you like it!
+	<div class="entry__content">Research Some time ago I got involved in the world of web vulnerabilities and thanks to several hackers from the Hispanic community we met several days to talk about these vulnerabilities. Time went by and I thought, why don&rsquo;t I make a compilation of the most common vulnerabilities in the bug bounty world? So I created the following repository, I hope you like it!
 The only bad thing is that it is in Spanish as it is dedicated to this wonderful community which has helped me a lot on my way.</div>
 	<div class="entry__meta meta mt tar">
 	<time class="entry__meta-published meta-published" datetime="2022-02-28T13:32:38-05:00">February 28, 2022</time>
@@ -104,7 +104,7 @@ The only bad thing is that it is in Spanish as it is dedicated to this wonderful
 				<div class="card card--2col">
 					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/fd-chall/">Pwnable.kr - fd [ PWN ]</a></h1>
-	<div class="entry__content">The first thing we have to do when logging into the ssh server is to look at the program code.
+	<div class="entry__content">fd The first thing we have to do when logging into the ssh server is to look at the program code.
 #include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&lt;2){ printf(&#34;pass argv[1] a number\n&#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&#34;LETMEWIN\n&#34;, buf)){ printf(&#34;good job :)\n&#34;); system(&#34;/bin/cat flag&#34;); exit(0); } printf(&#34;learn about Linux file IO\n&#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer.</div>
 	<div class="entry__meta meta mt tar">
 	<time class="entry__meta-published meta-published" datetime="2022-02-27T18:44:48-05:00">February 27, 2022</time>
@@ -115,7 +115,7 @@ The only bad thing is that it is in Spanish as it is dedicated to this wonderful
 				<div class="card card--2col">
 					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/blog/post/racecar/">HTB - Racecar [ PWN ]</a></h1>
-	<div class="entry__content">Before starting the vulnerability search, we must first perform a basic analysis.
+	<div class="entry__content">Racecar Before starting the vulnerability search, we must first perform a basic analysis.
 If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
 We are going to debug the executable with the IDA tool.
 Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC.</div>

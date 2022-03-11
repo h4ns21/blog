@@ -9,7 +9,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="HTB - Racecar [ PWN ]" />
-<meta property="og:description" content="Before starting the vulnerability search, we must first perform a basic analysis.
+<meta property="og:description" content="Racecar Before starting the vulnerability search, we must first perform a basic analysis.
 If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
 We are going to debug the executable with the IDA tool.
 Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC." />
@@ -20,16 +20,16 @@ Inside the car_menu function we have a file called flag.txt which will only be o
 
 
 		<meta itemprop="name" content="HTB - Racecar [ PWN ]">
-<meta itemprop="description" content="Before starting the vulnerability search, we must first perform a basic analysis.
+<meta itemprop="description" content="Racecar Before starting the vulnerability search, we must first perform a basic analysis.
 If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
 We are going to debug the executable with the IDA tool.
 Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC."><meta itemprop="datePublished" content="2022-02-27T18:39:55-05:00" />
 <meta itemprop="dateModified" content="2022-02-27T18:39:55-05:00" />
-<meta itemprop="wordCount" content="356">
+<meta itemprop="wordCount" content="357">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HTB - Racecar [ PWN ]"/>
-<meta name="twitter:description" content="Before starting the vulnerability search, we must first perform a basic analysis.
+<meta name="twitter:description" content="Racecar Before starting the vulnerability search, we must first perform a basic analysis.
 If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.
 We are going to debug the executable with the IDA tool.
 Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC."/>
@@ -71,9 +71,14 @@ Inside the car_menu function we have a file called flag.txt which will only be o
 				<h1 class="entry__title">HTB - Racecar [ PWN ]</h1>
 <details class="entry__toc toc" open>
 	<summary class="toc__title">Table of Contents</summary>
-	<nav id="TableOfContents"></nav>
+	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#racecar">Racecar</a></li>
+  </ul>
+</nav>
 </details>
-				<div class="entry__content"><p>Before starting the vulnerability search, we must first perform a basic analysis.</p>
+				<div class="entry__content"><h2 id="racecar">Racecar</h2>
+<p>Before starting the vulnerability search, we must first perform a basic analysis.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/142025252-e61b2429-06f9-4464-94d7-e3cc8e7507e4.png" alt="image"></p>
 <p>If we look at the strings of the executable and filter by the word &lsquo;flag&rsquo; we realize that there is a file called flag.txt which we assume is hidden.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/142025391-0d68b387-fb14-46ab-948d-345e326b67a9.png" alt="image"></p>

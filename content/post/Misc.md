@@ -6,13 +6,13 @@ draft: false
 
 In this post I am going to show you how to perform some easy rating challenges on the [247CTF](https://247ctf.com/dashboard) platform.
 
-## __An Impossible Number__
+## An Impossible Number
 
-### __Description__
+### Description
 
 Can you think of a number which at the same time is one more than itself?
 
-### __Solution__
+### Solution
 
 We are given the following C code.
 
@@ -50,13 +50,13 @@ Therefore the previous number is the one we have to enter to show the flag.
 
 ![image](https://user-images.githubusercontent.com/88755387/156633679-43b37baa-1c30-4a4f-865b-8ce1f42bc96e.png)
 
-## __The Flag Lottery__
+## The Flag Lottery
 
-### __Description__
+### Description
 
 Can you guess the secret number to win the lottery? The prize is a flag!
 
-### __Solution__
+### Solution
 
 We are given the following python code.
 
@@ -125,18 +125,3 @@ while True:
 ![image](https://user-images.githubusercontent.com/88755387/156637228-927884d5-c5ad-4b24-b48b-53b0714acde9.png)
 
 I hope you enjoyed it! :D
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

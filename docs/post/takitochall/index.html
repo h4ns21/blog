@@ -67,13 +67,13 @@ from flask import Flask from flask import request from os import system app = Fl
 	<summary class="toc__title">Table of Contents</summary>
 	<nav id="TableOfContents">
   <ul>
-    <li><a href="#__introduction__"><strong>Introduction</strong></a></li>
-    <li><a href="#__first-sight__"><strong>First sight</strong></a></li>
-    <li><a href="#__exploitation__"><strong>Exploitation</strong></a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#first-sight">First sight</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
   </ul>
 </nav>
 </details>
-				<div class="entry__content"><h2 id="__introduction__"><strong>Introduction</strong></h2>
+				<div class="entry__content"><h2 id="introduction">Introduction</h2>
 <p>The objective of this challenge is to get an RCE, specifically to get the output of the <code>cat /etc/passwd</code> command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
 <span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> request
@@ -98,10 +98,10 @@ app <span style="color:#f92672">=</span> Flask(__name__)
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
     app<span style="color:#f92672">.</span>run()
 </code></pre></div><p>Before starting the analysis we can notice at a glance that a ping is performed to the address we set in the <code>ip</code> parameter.</p>
-<h2 id="__first-sight__"><strong>First sight</strong></h2>
+<h2 id="first-sight">First sight</h2>
 <p>When analyzing the code we notice that in line 14 we have several banned characters such as <code>&amp;;|$()</code> and `. This is logical since command injection payloads usually carry these characters, as we can see in the following <a href="https://github.com/payloadbox/command-injection-payload-list">link</a>.</p>
 <p>Another option we could try would be to convert them to another format such as base64, unicode, hexadecimal and various conversions that would help us achieve what we are looking for.</p>
-<h2 id="__exploitation__"><strong>Exploitation</strong></h2>
+<h2 id="exploitation">Exploitation</h2>
 <p>In this case we are dealing with a CRLF injection. If you want to know more about this type of web vulnerability you can do so by clicking on the following <a href="https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a">link</a> which will redirect you to the official HackTricks website which has a very good review about this bug.</p>
 <p>Once we know what we are dealing with, we can now crack the following code by typing in the <code>ip=</code> parameter the following payload:</p>
 <pre tabindex="0"><code>%0Aid

@@ -70,20 +70,20 @@ First steps Let&rsquo;s see what type of architecture it has because depending o
 	<summary class="toc__title">Table of Contents</summary>
 	<nav id="TableOfContents">
   <ul>
-    <li><a href="#__introduction__"><strong>Introduction</strong></a></li>
-    <li><a href="#__first-steps__"><strong>First steps</strong></a></li>
-    <li><a href="#__offset__"><strong>Offset</strong></a></li>
-    <li><a href="#__flag-address__"><strong>Flag address</strong></a></li>
-    <li><a href="#__code-development__"><strong>Code development</strong></a></li>
-    <li><a href="#__final-code__"><strong>Final code</strong></a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#first-steps">First steps</a></li>
+    <li><a href="#offset">Offset</a></li>
+    <li><a href="#flag-address">Flag address</a></li>
+    <li><a href="#code-development">Code development</a></li>
+    <li><a href="#final-code">Final code</a></li>
   </ul>
 </nav>
 </details>
-				<div class="entry__content"><h2 id="__introduction__"><strong>Introduction</strong></h2>
+				<div class="entry__content"><h2 id="introduction">Introduction</h2>
 <p>Let&rsquo;s start this challenge by looking at its description, and see what the author has to tell us about it.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/139706301-4ac66425-bb4a-4dd8-8350-f01fe7d00cd2.png" alt="image"></p>
 <p>Okay, so we already know that this is a basic ret2win. Let&rsquo;s not waste any more time and start developing the script.</p>
-<h2 id="__first-steps__"><strong>First steps</strong></h2>
+<h2 id="first-steps">First steps</h2>
 <p>Let&rsquo;s see what type of architecture it has because depending on whether it is x64 or x86_64 there are several modifications to be made in the final code.</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/139694975-1f9fcd31-b10f-43ff-807a-0fb33785d6eb.png" alt="image"></p>
 <p>Once we know that it is 64-bit let&rsquo;s run it and see what it&rsquo;s all about:</p>
@@ -93,7 +93,7 @@ First steps Let&rsquo;s see what type of architecture it has because depending o
 <p><img src="https://user-images.githubusercontent.com/88755387/139698443-229e41ab-6627-4b29-b3bf-3e645e7d566a.png" alt="image"></p>
 <p>In this case, we see that we only have the NX enabled. This protection marks the stack as non-executable so that even if we can overwrite the EIP to point to our shell code the shell code will never execute.</p>
 <p>The return-to-libc attack circumvents this protection by overwriting the return address, not with an address pointing to our injected shell code but rather to a libc function call address.</p>
-<h2 id="__offset__"><strong>Offset</strong></h2>
+<h2 id="offset">Offset</h2>
 <p>We are going to find the offset using gdb-peda which is a well known debugger in the Pwn world.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gdb-peda zoom2win
 gdb-peda$ pattern create <span style="color:#ae81ff">60</span>
@@ -104,10 +104,10 @@ gdb-peda$ r <span style="color:#75715e"># run te program</span>
 gdb-peda$ pattern offset AA0A <span style="color:#75715e"># First characters of RSP register</span>
 <span style="color:#75715e"># AA0A found at offset: 40</span>
 </code></pre></div><p>Once we know the offset we will find the function where the flag is located.</p>
-<h2 id="__flag-address__"><strong>Flag address</strong></h2>
+<h2 id="flag-address">Flag address</h2>
 <p>To find this address we will enter the <code>info functions</code> command inside the debugger:</p>
 <p><img src="https://user-images.githubusercontent.com/88755387/139700183-0c59bd7e-2e78-4d9f-9841-7ebbc112379f.png" alt="image"></p>
-<h2 id="__code-development__"><strong>Code development</strong></h2>
+<h2 id="code-development">Code development</h2>
 <p>Once we have everything ready we are going to develop the script that will launch the flag. For them we will rely on the PwnTools library which will help us to make the operation much easier.</p>
 <p>You can download PwnTools by clicking on the following <a href="https://github.com/Gallopsled/pwntools">link</a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/python3</span>
@@ -128,7 +128,7 @@ s<span style="color:#f92672">.</span>interactive()
 <pre tabindex="0"><code>ROPgadget --binary ./zoom2win --ropchain | grep ret
 </code></pre><p><img src="https://user-images.githubusercontent.com/88755387/139703027-f829df79-6903-4fde-a7ed-653d3a992f63.png" alt="image"></p>
 <p>Once we have it we are going to add it to our code so that it returns the content of the flag.txt.</p>
-<h2 id="__final-code__"><strong>Final code</strong></h2>
+<h2 id="final-code">Final code</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/python3</span>
 <span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 

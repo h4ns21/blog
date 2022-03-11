@@ -4,7 +4,7 @@ date: 2022-02-27T18:29:07-05:00
 draft: false
 ---
 
-## __Introduction__
+## Introduction
 
 Let's start this challenge by looking at its description, and see what the author has to tell us about it.
 
@@ -13,7 +13,7 @@ Let's start this challenge by looking at its description, and see what the autho
 
 Okay, so we already know that this is a basic ret2win. Let's not waste any more time and start developing the script.
 
-## __First steps__
+## First steps
 
 Let's see what type of architecture it has because depending on whether it is x64 or x86_64 there are several modifications to be made in the final code.
 
@@ -33,7 +33,7 @@ In this case, we see that we only have the NX enabled. This protection marks the
 
 The return-to-libc attack circumvents this protection by overwriting the return address, not with an address pointing to our injected shell code but rather to a libc function call address.
 
-## __Offset__
+## Offset
 
 We are going to find the offset using gdb-peda which is a well known debugger in the Pwn world.
 
@@ -50,13 +50,13 @@ gdb-peda$ pattern offset AA0A # First characters of RSP register
 
 Once we know the offset we will find the function where the flag is located.
 
-## __Flag address__
+## Flag address
 
 To find this address we will enter the `info functions` command inside the debugger:
 
 ![image](https://user-images.githubusercontent.com/88755387/139700183-0c59bd7e-2e78-4d9f-9841-7ebbc112379f.png)
 
-## __Code development__
+## Code development
 
 Once we have everything ready we are going to develop the script that will launch the flag. For them we will rely on the PwnTools library which will help us to make the operation much easier.
 
@@ -91,7 +91,7 @@ ROPgadget --binary ./zoom2win --ropchain | grep ret
 
 Once we have it we are going to add it to our code so that it returns the content of the flag.txt.
 
-## __Final code__
+## Final code
 
 ```python
 #!/usr/bin/python3

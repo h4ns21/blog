@@ -9,7 +9,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="Pwnable.kr - fd [ PWN ]" />
-<meta property="og:description" content="The first thing we have to do when logging into the ssh server is to look at the program code.
+<meta property="og:description" content="fd The first thing we have to do when logging into the ssh server is to look at the program code.
 #include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&lt;2){ printf(&#34;pass argv[1] a number\n&#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&#34;LETMEWIN\n&#34;, buf)){ printf(&#34;good job :)\n&#34;); system(&#34;/bin/cat flag&#34;); exit(0); } printf(&#34;learn about Linux file IO\n&#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://h4ns21.github.io/blog/post/fd-chall/" /><meta property="article:section" content="post" />
@@ -18,14 +18,14 @@
 
 
 		<meta itemprop="name" content="Pwnable.kr - fd [ PWN ]">
-<meta itemprop="description" content="The first thing we have to do when logging into the ssh server is to look at the program code.
+<meta itemprop="description" content="fd The first thing we have to do when logging into the ssh server is to look at the program code.
 #include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&lt;2){ printf(&#34;pass argv[1] a number\n&#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&#34;LETMEWIN\n&#34;, buf)){ printf(&#34;good job :)\n&#34;); system(&#34;/bin/cat flag&#34;); exit(0); } printf(&#34;learn about Linux file IO\n&#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer."><meta itemprop="datePublished" content="2022-02-27T18:44:48-05:00" />
 <meta itemprop="dateModified" content="2022-02-27T18:44:48-05:00" />
-<meta itemprop="wordCount" content="315">
+<meta itemprop="wordCount" content="316">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pwnable.kr - fd [ PWN ]"/>
-<meta name="twitter:description" content="The first thing we have to do when logging into the ssh server is to look at the program code.
+<meta name="twitter:description" content="fd The first thing we have to do when logging into the ssh server is to look at the program code.
 #include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&lt;2){ printf(&#34;pass argv[1] a number\n&#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&#34;LETMEWIN\n&#34;, buf)){ printf(&#34;good job :)\n&#34;); system(&#34;/bin/cat flag&#34;); exit(0); } printf(&#34;learn about Linux file IO\n&#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer."/>
 
 	<link rel="stylesheet" href="/blog/css/bundle.css">
@@ -67,7 +67,7 @@
 	<summary class="toc__title">Table of Contents</summary>
 	<nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#fd">fd</a>
       <ul>
         <li><a href="#__program-analysis__"><strong>Program analysis</strong></a></li>
         <li><a href="#__to-recap__"><strong>To recap</strong></a></li>
@@ -76,7 +76,8 @@
   </ul>
 </nav>
 </details>
-				<div class="entry__content"><p>The first thing we have to do when logging into the ssh server is to look at the program code.</p>
+				<div class="entry__content"><h2 id="fd">fd</h2>
+<p>The first thing we have to do when logging into the ssh server is to look at the program code.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">

@@ -4,7 +4,7 @@ date: 2022-02-27T18:35:38-05:00
 draft: false
 ---
 
-## __Introduction__
+## Introduction
 
 The objective of this challenge is to get an RCE, specifically to get the output of the `cat /etc/passwd` command.
 
@@ -35,13 +35,13 @@ if __name__ == '__main__':
 
 Before starting the analysis we can notice at a glance that a ping is performed to the address we set in the `ip` parameter.
 
-## __First sight__
+## First sight
 
 When analyzing the code we notice that in line 14 we have several banned characters such as `&;|$()` and `. This is logical since command injection payloads usually carry these characters, as we can see in the following [link](https://github.com/payloadbox/command-injection-payload-list).
 
 Another option we could try would be to convert them to another format such as base64, unicode, hexadecimal and various conversions that would help us achieve what we are looking for.
 
-## __Exploitation__
+## Exploitation
 
 In this case we are dealing with a CRLF injection. If you want to know more about this type of web vulnerability you can do so by clicking on the following [link](https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a) which will redirect you to the official HackTricks website which has a very good review about this bug.
 

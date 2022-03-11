@@ -47,7 +47,7 @@ Let&amp;rsquo;s see what&amp;rsquo;s inside.</description>
       <pubDate>Mon, 28 Feb 2022 13:32:38 -0500</pubDate>
       
       <guid>https://h4ns21.github.io/blog/post/commonwebvulns/</guid>
-      <description>Some time ago I got involved in the world of web vulnerabilities and thanks to several hackers from the Hispanic community we met several days to talk about these vulnerabilities. Time went by and I thought, why don&amp;rsquo;t I make a compilation of the most common vulnerabilities in the bug bounty world? So I created the following repository, I hope you like it!
+      <description>Research Some time ago I got involved in the world of web vulnerabilities and thanks to several hackers from the Hispanic community we met several days to talk about these vulnerabilities. Time went by and I thought, why don&amp;rsquo;t I make a compilation of the most common vulnerabilities in the bug bounty world? So I created the following repository, I hope you like it!
 The only bad thing is that it is in Spanish as it is dedicated to this wonderful community which has helped me a lot on my way.</description>
     </item>
     
@@ -57,7 +57,7 @@ The only bad thing is that it is in Spanish as it is dedicated to this wonderful
       <pubDate>Sun, 27 Feb 2022 18:44:48 -0500</pubDate>
       
       <guid>https://h4ns21.github.io/blog/post/fd-chall/</guid>
-      <description>The first thing we have to do when logging into the ssh server is to look at the program code.
+      <description>fd The first thing we have to do when logging into the ssh server is to look at the program code.
 #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;string.h&amp;gt;char buf[32]; int main(int argc, char* argv[], char* envp[]){ if(argc&amp;lt;2){ printf(&amp;#34;pass argv[1] a number\n&amp;#34;); return 0; } int fd = atoi( argv[1] ) - 0x1234; int len = 0; len = read(fd, buf, 32); if(!strcmp(&amp;#34;LETMEWIN\n&amp;#34;, buf)){ printf(&amp;#34;good job :)\n&amp;#34;); system(&amp;#34;/bin/cat flag&amp;#34;); exit(0); } printf(&amp;#34;learn about Linux file IO\n&amp;#34;); return 0; } Program analysis int fd = atoi( argv[1] ) - 0x1234; Atoi converts a string to an integer.</description>
     </item>
     
@@ -67,7 +67,7 @@ The only bad thing is that it is in Spanish as it is dedicated to this wonderful
       <pubDate>Sun, 27 Feb 2022 18:39:55 -0500</pubDate>
       
       <guid>https://h4ns21.github.io/blog/post/racecar/</guid>
-      <description>Before starting the vulnerability search, we must first perform a basic analysis.
+      <description>Racecar Before starting the vulnerability search, we must first perform a basic analysis.
 If we look at the strings of the executable and filter by the word &amp;lsquo;flag&amp;rsquo; we realize that there is a file called flag.txt which we assume is hidden.
 We are going to debug the executable with the IDA tool.
 Inside the car_menu function we have a file called flag.txt which will only be opened if the program flow enters car_menu:loc_FC.</description>
